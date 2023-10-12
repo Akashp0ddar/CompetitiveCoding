@@ -10,12 +10,9 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         List<Integer> list = new ArrayList<Integer>();
         List<Integer> list2 = new ArrayList<>();
-        list.add(-2);
-        list.add(2);
-        list.add(1);
-        list2.add(5);
-        list2.add(-6);
-        Solutions.countApplesAndOranges(7,11,5,15,list,list2);
+        list.add(4);
+
+        System.out.println(Solutions.kangaroo(0,3,4,2));
 
     }
 }

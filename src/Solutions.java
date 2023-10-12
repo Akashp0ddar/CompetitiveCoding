@@ -180,6 +180,83 @@ public class Solutions {
     }
 
     /**
+     * <a href="https://www.hackerrank.com/challenges/divisible-sum-pairs/problem">...</a>
+     */
+
+    public static int divisibleSumPairs(int n, int k, List<Integer> ar) {
+        // Write your code here
+        int pairs = 0;
+        for (int i = 0; i < ar.size(); i++) {
+            for (int j = i + 1; j < ar.size(); j++) {
+                if ((ar.get(i) + ar.get(j)) % k == 0) {
+                    pairs++;
+                }
+            }
+        }
+        return pairs;
+    }
+
+    /**
+     * <a href="https://www.hackerrank.com/challenges/breaking-best-and-worst-records/problem">...</a>
+     */
+    public static List<Integer> breakingRecords(List<Integer> scores) {
+        // Write your code here
+        int min = 0;
+        int max = 0;
+        int minScore = scores.get(0);
+        int maxScore = scores.get(0);
+        List<Integer> minMaxList = new ArrayList<>();
+
+        for (Integer score : scores) {
+            if (score > minScore) {
+                minScore = score;
+                min++;
+            }
+
+            if (score < maxScore) {
+                maxScore = score;
+                max++;
+            }
+
+        }
+
+
+        minMaxList.add(min);
+        minMaxList.add(max);
+        return minMaxList;
+    }
+
+    /**
+     * <a href="https://www.hackerrank.com/challenges/the-birthday-bar/problem">...</a>
+     */
+    public static int birthday(List<Integer> s, int d, int m) {
+        // Write your code here
+        int divided = 0;
+        int sum;
+        for (int i = 0; i < s.size() - m + 1; i++) {
+            sum = s.get(i);
+            for (int j = 0; j < i + m - 1; j++) {
+                sum = sum + s.get(j);
+            }
+
+            if (sum == d) {
+                divided++;
+            }
+            sum = 0;
+        }
+        return divided;
+    }
+
+    /**
+     * <a href="https://www.hackerrank.com/challenges/kangaroo/problem">...</a>
+     */
+    public static String kangaroo(int x1, int v1, int x2, int v2) {
+        // Write your code here
+        if (v1 > v2 && (x2 - x1) % (v1 - v2) == 0) return "YES";
+        return "NO";
+    }
+
+    /**
      * <a href="https://leetcode.com/problems/remove-element/">...</a>
      */
     public int removeElement(int[] nums, int val) {
@@ -207,6 +284,5 @@ public class Solutions {
         }
         return start;
     }
-
 
 }
