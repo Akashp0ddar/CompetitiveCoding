@@ -102,6 +102,84 @@ public class Solutions {
     }
 
     /**
+     * <a href="https://www.hackerrank.com/challenges/time-conversion/problem">...</a>
+     */
+    public static String timeConversion(String s) {
+//         Write your code here
+        String hello = "";
+        String hour = s.substring(0, 2);
+        int numberHour = Integer.parseInt(hour);
+        if (s.contains("AM")) {
+            if (numberHour == 12) {
+                hello = "00" + s.substring(2, 8);
+            } else {
+                hello = "0" + numberHour + s.substring(2, 8);
+            }
+        } else if (s.contains("PM")) {
+            if (numberHour < 12) {
+                if (String.valueOf(numberHour + 12).equals("12")) {
+                    hello = "00" + s.substring(2, 8);
+                } else {
+                    hello = numberHour + 12 + s.substring(2, 8);
+                }
+            } else if (numberHour == 12) {
+                hello = numberHour + s.substring(2, 8);
+            }
+        }
+
+        return hello;
+
+    }
+
+
+    public static String timeConversionChatGPT(String timeStr) {
+        String[] timeParts = timeStr.substring(0, timeStr.length() - 2).split(":");
+        int hours = Integer.parseInt(timeParts[0]);
+        int minutes = Integer.parseInt(timeParts[1]);
+        int seconds = Integer.parseInt(timeParts[2]);
+        String amPm = timeStr.substring(timeStr.length() - 2);
+
+        // Handle the case of 12:00:00AM or 12:00:00PM
+        if (hours == 12) {
+            hours = 0;
+        }
+
+        // Adjust hours for PM times
+        if (amPm.equals("PM")) {
+            hours += 12;
+        }
+
+        // Convert back to string format with zero padding
+        String result = String.format("%02d:%02d:%02d", hours, minutes, seconds);
+        return result;
+    }
+
+    /**
+     * <a href="https://www.hackerrank.com/challenges/apple-and-orange/problem">...</a>
+     */
+    public static void countApplesAndOranges(int s, int t, int a, int b, List<Integer> apples, List<Integer> oranges) {
+        // Write your code here
+        int appleCount = 0;
+        int orangeCount = 0;
+        apples.replaceAll(integer -> integer + a);
+        oranges.replaceAll(integer -> integer + b);
+        for (int apple : apples) {
+            if (apple >= s && apple <= t) {
+                appleCount++;
+            }
+        }
+
+        for (int orange : oranges) {
+            if (orange >= s && orange <= t) {
+                orangeCount++;
+            }
+        }
+
+        System.out.println(appleCount + "\n" + orangeCount);
+
+    }
+
+    /**
      * <a href="https://leetcode.com/problems/remove-element/">...</a>
      */
     public int removeElement(int[] nums, int val) {
@@ -129,4 +207,6 @@ public class Solutions {
         }
         return start;
     }
+
+
 }

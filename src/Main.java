@@ -9,19 +9,13 @@ public class Main {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         List<Integer> list = new ArrayList<Integer>();
-        List<Long> list2 = new ArrayList<>();
-        list.add(-4);
-        list.add(3);
-        list.add(-9);
-        list.add(0);
-        list.add(4);
+        List<Integer> list2 = new ArrayList<>();
+        list.add(-2);
+        list.add(2);
         list.add(1);
-        list2.add(1000000001L);
-        list2.add(1000000002L);
-        list2.add(1000000003L);
-        list2.add(1000000004L);
-        list2.add(1000000005L);
-        System.out.println();
-        Solutions.plusMinus(list);
+        list2.add(5);
+        list2.add(-6);
+        Solutions.countApplesAndOranges(7,11,5,15,list,list2);
+
     }
 }
