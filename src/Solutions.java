@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Solutions {
 
@@ -284,5 +285,30 @@ public class Solutions {
         }
         return start;
     }
+
+
+    /**
+     * <a href="https://www.hackerrank.com/challenges/migratory-birds/problem">...</a>
+     * */
+    public static int migratoryBirds(List<Integer> arr) {
+        // Write your code here
+        int frequency = 0;
+        int mostFrequentElement = 0;
+        for (int i = 0; i < arr.size(); i++) {
+            int count = 0;
+            for (int j = i+1; j < arr.size(); j++) {
+                if (Objects.equals(arr.get(i), arr.get(j))){
+                    count++;
+                }
+            }
+
+            if (count>frequency){
+                frequency = count;
+                mostFrequentElement = arr.get(i);
+            }
+        }
+        return mostFrequentElement;
+    }
+
 
 }
