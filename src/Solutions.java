@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Solutions {
 
@@ -258,6 +256,36 @@ public class Solutions {
     }
 
     /**
+     * <a href="https://www.hackerrank.com/challenges/migratory-birds/problem">...</a>
+     */
+    public static int migratoryBirds(List<Integer> arr) {
+        // Write your code here
+        int frequency = 0;
+        int mostFrequentElement = 0;
+        for (int i = 0; i < arr.size(); i++) {
+            int count = 0;
+            for (int j = i + 1; j < arr.size(); j++) {
+                if (Objects.equals(arr.get(i), arr.get(j))) {
+                    count++;
+                }
+            }
+
+            if (count > frequency) {
+                frequency = count;
+                mostFrequentElement = arr.get(i);
+            }
+        }
+        return mostFrequentElement;
+    }
+
+    /**
+     * <a href="https://atcoder.jp/contests/abc325/tasks/abc325_a">...</a>
+     */
+    private static String takashiSan(String s, String T) {
+        return s + " " + "san";
+    }
+
+    /**
      * <a href="https://leetcode.com/problems/remove-element/">...</a>
      */
     public int removeElement(int[] nums, int val) {
@@ -272,7 +300,7 @@ public class Solutions {
     }
 
     /**
-     * <a href="https://leetcode.com/problems/search-insert-position/">...</a>
+     * <a  href="https://leetcode.com/problems/search-insert-position/">problemLink</a>
      */
     public int searchInsert(int[] nums, int target) {
         int start = 0;
@@ -286,29 +314,183 @@ public class Solutions {
         return start;
     }
 
-
     /**
-     * <a href="https://www.hackerrank.com/challenges/migratory-birds/problem">...</a>
-     * */
-    public static int migratoryBirds(List<Integer> arr) {
-        // Write your code here
-        int frequency = 0;
-        int mostFrequentElement = 0;
-        for (int i = 0; i < arr.size(); i++) {
-            int count = 0;
-            for (int j = i+1; j < arr.size(); j++) {
-                if (Objects.equals(arr.get(i), arr.get(j))){
-                    count++;
-                }
-            }
+     * <a href="https://leetcode.com/problems/merge-strings-alternately/?envType=study-plan-v2&envId=leetcode-75">...</a>
+     */
+    public String mergeAlternately(String word1, String word2) {
+        char[] word1Arr = word1.toCharArray();
+        char[] word2Arr = word2.toCharArray();
+        StringBuilder sb = new StringBuilder();
+        if (word1.length() > word2.length()) {
+            for (int i = 0; i < word2Arr.length; i++) {
+                sb.append(word1Arr[i]);
+                sb.append(word2Arr[i]);
 
-            if (count>frequency){
-                frequency = count;
-                mostFrequentElement = arr.get(i);
+            }
+            sb.append(word1.substring(word2Arr.length));
+
+        } else if (word2.length() > word1.length()) {
+
+            for (int i = 0; i < word1Arr.length; i++) {
+                sb.append(word1Arr[i]);
+                sb.append(word2Arr[i]);
+            }
+            sb.append(word2.substring(word1Arr.length));
+        } else {
+            for (int i = 0; i < word1Arr.length; i++) {
+                sb.append(word1Arr[i]);
+                sb.append(word2Arr[i]);
             }
         }
-        return mostFrequentElement;
+        return String.valueOf(sb);
     }
 
 
+    /**
+     * <a href="https://leetcode.com/problems/kids-with-the-greatest-number-of-candies/?envType=study-plan-v2&envId=leetcode-75">...</a>
+     * watch solution
+     */
+    public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
+        ArrayList<Boolean> result = new ArrayList<>(candies.length);
+
+        int max = candies[0];
+
+        for (int i = 1; i < candies.length; i++) {
+            if (candies[i] > max) {
+                max = candies[i];
+            }
+        }
+
+        for (int i = 0; i < candies.length; i++) {
+            candies[i] = candies[i] + extraCandies;
+            if (candies[i] >= max) {
+                result.add(true);
+            } else {
+                result.add(false);
+            }
+        }
+
+        return result;
+    }
+
+
+    /**
+     * <a href="https://leetcode.com/problems/reverse-vowels-of-a-string/description/?envType=study-plan-v2&envId=leetcode-75">...</a>
+     * 290/480 test cases passed
+     * at last watched submission
+     */
+    public String reverseVowels(String s) {
+        Stack<Character> stack = new Stack<>();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < s.length(); i++) {
+            char currentChar = s.charAt(i);
+            if (currentChar == 'a' || currentChar == 'e' || currentChar == 'i' || currentChar == 'o' || currentChar == 'u') {
+                stack.add(currentChar);
+            }
+        }
+
+        for (char c : s.toCharArray()) {
+            if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
+                sb.append(stack.pop());
+
+            } else {
+                sb.append(c);
+            }
+        }
+        return sb.toString();
+
+    }
+
+
+    /**
+     * <a href="https://leetcode.com/problems/can-place-flowers/?envType=study-plan-v2&envId=leetcode-75">...</a>
+     */
+    public boolean canPlaceFlowers(int[] flowerbed, int n) {
+        int zeros = 0;
+        int maxFlowers = 0;
+        for (int i : flowerbed) {
+            if (i == 0) {
+                zeros++;
+            } else {
+                maxFlowers += (zeros - 1) / 2;
+                zeros = 0;
+
+            }
+        }
+        return maxFlowers >= n;
+    }
+
+
+    public int firstMissingPositive(ArrayList<Integer> A) {
+//        Arrays.s
+        Collections.sort(A);
+
+        if (A.size() == 1) {
+            return A.get(0) + 1;
+        }
+
+        for (int i = 0; i < A.size(); i++) {
+            if (A.get(0) < 0) {
+                return 1;
+            }
+
+            if (A.get(i) - A.get(i + 1) > 1) {
+                return A.get(i) + 1;
+            }
+
+            if (A.get(0) > 1) {
+                return A.get(0) - 1;
+            }
+
+        }
+
+        return 0;
+    }
+
+
+    public ArrayList<Integer> solve(ArrayList<Integer> A) {
+        int zeros = 0;
+        int ones = 0;
+
+        for (int i : A) {
+            if (i == 0) {
+                zeros++;
+            } else {
+                ones++;
+            }
+        }
+
+        ArrayList<Integer> arrayList = new ArrayList<>();
+
+        for (int i = 0; i < zeros; i++) {
+            arrayList.add(0);
+        }
+
+        for (int i = 0; i < ones; i++) {
+            arrayList.add(1);
+        }
+
+        return arrayList;
+    }
+
+
+    /**
+     * <a href="https://leetcode.com/problems/reverse-words-in-a-string/?envType=study-plan-v2&envId=leetcode-75">Reverse Words in a String</a>
+     */
+
+    public String reverseWords(String s) {
+
+        String[] words = s.split(" ");
+
+        StringBuilder newWord = new StringBuilder();
+        for (int i = words.length - 1; i >= 0; i--) {
+            if (!Objects.equals(words[i], "")) {
+
+                newWord.append(words[i]).append(" ");
+            }
+        }
+
+
+        return newWord.toString().trim();
+    }
 }
