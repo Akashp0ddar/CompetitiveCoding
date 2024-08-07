@@ -1,6 +1,3 @@
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
 
 public class Main {
@@ -9,38 +6,113 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         Solutions sol = new Solutions();
 
-        ArrayList<Integer> arrayList = new ArrayList<>();
-
-
+//        ArrayList<Integer> arrayList = new ArrayList<>();
 //        int n = sc.nextInt();
-//        int count = 0;
+//        int counter = 0;
+//        String[] arr = new String[n];
 //
-//        ArrayList<String> arr = new ArrayList<>();
-//        for (int i = 0; i < n; i++) {
-//            String name = sc.next();
-//            count += sc.nextInt();
-//            arr.add(name);
+//        for (int i = 0; i < arr.length; i++) {
+//            arr[i] = sc.next();
 //        }
-//        Collections.sort(arr);
-//        System.out.println(arr.get(count%n));
-
-        System.out.println(ValidateMathExpression.isValidMathExpression("1 plus 2 minus 3"));
-
-
-        //mouse move
-//        int xCoord = 500;
-//        int yCoord = 500;
 //
-//        // Move the cursor
-//        while (true){
+//        for (int i = 0; i < arr.length; i++) {
 //
-//            Robot robot = new Robot();
-//            robot.mouseMove(xCoord, yCoord);
-//            Thread.sleep(5000);
+//            counter++;
+//            if (arr[i].equals("sweet")) {
+//
+//                if (i + 1 < arr.length && arr[i + 1].equals("sweet")) {
+//                    counter++;
+//                    break;
+//                }
+//            }
+//
 //        }
+//
+//
+//
+//        if (counter == arr.length) {
+//            System.out.println("Yes");
+//        } else {
+//            System.out.println("No");
+//        }
+
+//        olympics2024(sc);
+
+        int testCases = sc.nextInt();
+
+        for (int i = 0; i < testCases; i++) {
+            System.out.println(noWinner(sc));
+        }
+    }
+
+
+    public static void olympics2024(Scanner sc) {
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        int c = sc.nextInt();
+        int counterA = 0;
+        int counterB = 0;
+        int counterC = 0;
+
+        if (a != 5) {
+            counterA = 5 - a;
+        }
+
+        if (b != 5) {
+            counterB = 5 - b;
+        }
+
+        if (c != 5) {
+            counterC = 5 - c;
+        }
+
+        System.out.println(counterA + counterB + counterC);
 
 
     }
+
+
+    public static String noWinner(Scanner sc) {
+//        int A = sc.nextInt();
+//        int B = sc.nextInt();
+//        int C = sc.nextInt();
+//        int M = sc.nextInt();
+
+        int alice = sc.nextInt();
+        int bob = sc.nextInt();
+        int cameron = sc.nextInt();
+        int additionalMatches = sc.nextInt();
+
+
+//        3
+//        3 5 2 1
+//        4 4 2 5
+//        1 4 7 2
+
+//        if(A+M == B || A+M == C || B+M== C || B+M== A || C+M == A || C+M == B){
+//            return "Yes";
+//        }
+//
+//        if(A==B || B==C || C==A)    return "Yes";
+
+        if (additionalMatches + cameron == alice || additionalMatches + cameron == bob || alice == bob) {
+            return "Yes";
+        }
+
+        if (additionalMatches + bob == alice || additionalMatches + bob == cameron || alice == cameron) {
+            return "Yes";
+        }
+
+
+        if (additionalMatches + alice == bob || additionalMatches + alice == cameron || bob == cameron) {
+            return "Yes";
+        }
+
+
+        return "No";
+
+    }
+
 
 }
 
