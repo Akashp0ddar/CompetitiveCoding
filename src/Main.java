@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -6,36 +5,48 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Solutions sol = new Solutions();
-        int[] arr = {-3, -1, 0, 0, 0, 3, 3};
-//
-//        int t = sc.nextInt();
-
-//        System.out.println('z'-'a');
-
-//        System.out.println(getLucky("zbax", 2));
-
-
-//        System.out.println(lengthOfLastWord("luffy is still joyboy"));
+        int[] arr = {1, 2, 3};
 
 //        int k = 1010101;
 //        System.out.println(Integer.parseInt(String.valueOf(k), 2));
 
+        ListNode head = new ListNode();
 
-//        System.out.println(findComplement(1111));
 
-//        System.out.println(sol.increasingTriplet(arr));
+        Solutions.add(head, 1);
+        Solutions.add(head, 2);
+        Solutions.add(head, 3);
+        Solutions.add(head, 4);
+        Solutions.add(head, 5);
 
-//        ListNode head = sol.modifiedList(arr, null);
-//
-//
-//        printList(head);
+//        Solutions.printList(head);
 
-        System.out.println(sol.removeDuplicates(arr));
-        System.out.println(Arrays.toString(arr));
 
-//        System.out.println(Arrays.toString(productExceptSelf(arr)));
+        sol.modifiedList(arr, head);
 
     }
+
+
+    // Java function to insert a new node at the beginning of the
+// linked list
+    public static ListNode insertAtBeginning(ListNode head, int value) {
+        // Create a new node with the given value
+        ListNode newNode = new ListNode(value);
+
+        // Set the next pointer of the new node to the current
+        // head
+        newNode.next = head;
+
+        // Move the head to point to the new node
+        head = newNode;
+
+        // Return the new head of the linked list
+        return head;
+    }
+
+
+
+
 
     public static void printList(ListNode head) {
         ListNode current = head;

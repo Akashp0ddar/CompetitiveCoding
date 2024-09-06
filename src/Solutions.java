@@ -545,19 +545,62 @@ public class Solutions {
     }
 
 
+    // Function to add a new node at the end of the list
+    public static void add(ListNode head, int val) {
+        ListNode newNode = new ListNode(val);
+        if (head == null) {
+            head = newNode;
+        } else {
+            ListNode current = head;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+    }
+
+    public static void printList(ListNode head) {
+        ListNode current = head;
+        while (current != null) {
+            System.out.print(current.val + " ");
+            current = current.next;
+        }
+    }
+
     public ListNode modifiedList(int[] nums, ListNode head) {
         if (nums == null || nums.length == 0) {
             return null;
         }
 
-        ListNode dummy = new ListNode(0);
-        ListNode current = dummy;
+//        ListNode dummy = new ListNode(0);
+//        ListNode current = dummy;
+//
+//        for (int num : nums) {
+//            current.next = new ListNode(num);
+//            current = current.next;
+//        }
+//
+//        return dummy.next;
+
+        ListNode temp = head;
+
+        ArrayList<Integer> arrayList = new ArrayList<>();
 
         for (int num : nums) {
-            current.next = new ListNode(num);
-            current = current.next;
+            arrayList.add(num);
         }
 
-        return dummy.next;
+
+        while (temp != null) {
+
+            if (arrayList.contains(temp.val)) {
+
+                temp = temp.next;
+            }
+
+            temp.next = temp.next.next;
+        }
+
+        return head;
     }
 }
