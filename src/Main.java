@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -5,44 +6,160 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Solutions sol = new Solutions();
+        int[] arr = {-3, -1, 0, 0, 0, 3, 3};
+//
+//        int t = sc.nextInt();
 
-//        ArrayList<Integer> arrayList = new ArrayList<>();
-//        int n = sc.nextInt();
-//        int counter = 0;
-//        String[] arr = new String[n];
-//
-//        for (int i = 0; i < arr.length; i++) {
-//            arr[i] = sc.next();
-//        }
-//
-//        for (int i = 0; i < arr.length; i++) {
-//
-//            counter++;
-//            if (arr[i].equals("sweet")) {
-//
-//                if (i + 1 < arr.length && arr[i + 1].equals("sweet")) {
-//                    counter++;
-//                    break;
-//                }
-//            }
-//
-//        }
-//
-//
-//
-//        if (counter == arr.length) {
-//            System.out.println("Yes");
-//        } else {
-//            System.out.println("No");
-//        }
+//        System.out.println('z'-'a');
 
-//        olympics2024(sc);
+//        System.out.println(getLucky("zbax", 2));
 
-        int testCases = sc.nextInt();
 
-        for (int i = 0; i < testCases; i++) {
-            System.out.println(noWinner(sc));
+//        System.out.println(lengthOfLastWord("luffy is still joyboy"));
+
+//        int k = 1010101;
+//        System.out.println(Integer.parseInt(String.valueOf(k), 2));
+
+
+//        System.out.println(findComplement(1111));
+
+//        System.out.println(sol.increasingTriplet(arr));
+
+//        ListNode head = sol.modifiedList(arr, null);
+//
+//
+//        printList(head);
+
+        System.out.println(sol.removeDuplicates(arr));
+        System.out.println(Arrays.toString(arr));
+
+//        System.out.println(Arrays.toString(productExceptSelf(arr)));
+
+    }
+
+    public static void printList(ListNode head) {
+        ListNode current = head;
+        while (current != null) {
+            System.out.print(current.val + " ");
+            current = current.next;
         }
+    }
+
+
+    public static int[] productExceptSelf(int[] nums) {
+
+        int[] arr = new int[nums.length];
+        int zeroCounter = 0;
+        int sum = 1;
+
+
+        for (int num : nums) {
+
+            if (num != 0) {
+                sum = sum * num;
+
+            } else {
+                zeroCounter++;
+            }
+
+        }
+
+
+        for (int i = 0; i < nums.length; i++) {
+
+
+            if (zeroCounter >= 2) {
+                arr[i] = 0;
+            } else if (zeroCounter == 1) {
+
+                if (nums[i] != 0) {
+                    arr[i] = 0;
+                } else {
+                    arr[i] = sum;
+                }
+
+            } else {
+                arr[i] = sum / nums[i];
+            }
+
+        }
+
+
+        return arr;
+
+    }
+
+
+    public static int findComplement(int num) {
+
+
+        String string = Integer.toBinaryString(num);
+        StringBuilder stringBuilder = new StringBuilder();
+
+        int startCounter = 0;
+
+        for (int i = 0; i < string.length(); i++) {
+            if (string.charAt(i) == '0') {
+                stringBuilder.replace(startCounter, i, "1");
+            } else {
+                stringBuilder.replace(startCounter, i, "0");
+
+            }
+
+            startCounter++;
+        }
+
+
+        return Integer.parseInt(stringBuilder.toString().trim(), 2);
+
+    }
+
+
+    public static int lengthOfLastWord(String s) {
+
+        String[] arr = s.split(" ");
+
+        return arr[arr.length - 1].length();
+
+    }
+
+
+    public static int getLucky(String s, int k) {
+
+        int finalValue;
+
+
+        String alphabets = "abcdefghijklmnopqrstuvwxyz";
+
+        StringBuilder convertedString = new StringBuilder();
+
+
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            int alphabetIndex = alphabets.indexOf(c) + 1;
+            convertedString.append(alphabetIndex);
+        }
+
+
+        while (k != 0) {
+
+
+            int check = 0;
+
+            for (char c : convertedString.toString().toCharArray()) {
+                check += Integer.parseInt(String.valueOf(c));
+            }
+
+            convertedString.replace(0, convertedString.length(), String.valueOf(check));
+
+
+            k--;
+        }
+
+        finalValue = Integer.parseInt(convertedString.toString());
+
+
+        return finalValue;
     }
 
 
@@ -71,12 +188,8 @@ public class Main {
 
     }
 
-
     public static String noWinner(Scanner sc) {
-//        int A = sc.nextInt();
-//        int B = sc.nextInt();
-//        int C = sc.nextInt();
-//        int M = sc.nextInt();
+
 
         int alice = sc.nextInt();
         int bob = sc.nextInt();
@@ -112,6 +225,97 @@ public class Main {
         return "No";
 
     }
+
+
+    // function to convert decimal to binary
+    public static void decToBinary(int n) {
+        // array to store binary number
+        int[] binaryNum = new int[1000];
+
+        // counter for binary array
+        int i = 0;
+        while (n > 0) {
+            // storing remainder in binary array
+            binaryNum[i] = n % 2;
+            n = n / 2;
+            i++;
+        }
+
+        // printing binary array in reverse order
+        for (int j = i - 1; j >= 0; j--)
+            System.out.print(binaryNum[j]);
+    }
+
+    public static void moveZeroes(int[] nums) {
+
+//        ArrayList<Integer> nonZeros = new ArrayList<>();
+//
+//        for (int j : nums) {
+//            if (j > 0) {
+//                nonZeros.add(j);
+//            }
+//        }
+//
+//        for (int num : nums) {
+//            if (num == 0) {
+//                nonZeros.add(0);
+//            }
+//        }
+//
+//        System.out.println(Arrays.toString(nonZeros.toArray()));
+
+
+//        int[] nonZeros = new int[nums.length];
+//        int nonZeroCounter = 0;
+//        int arrayCounter = 0;
+//        while (arrayCounter!= nums.length){
+//            if (nums[arrayCounter]>0){
+//                nonZeros[nonZeroCounter++] = nums[arrayCounter];
+//            }
+//            arrayCounter++;
+//        }
+//
+//        System.out.println(Arrays.toString(nonZeros));
+
+
+    }
+
+    public static boolean isSubsequence(String s, String t) {
+
+        if (s.isEmpty()) {
+            return true;
+        }
+
+        char[] newchar = s.toCharArray();
+
+        int counter = 0;
+        for (int i = 0; i < t.length() && counter < s.length(); i++) {
+            if (s.charAt(counter) == t.charAt(i)) {
+                counter++;
+            }
+        }
+
+        return counter == s.length();
+    }
+
+//    public static int[] productExceptSelf(int[] nums) {
+//        int[] result = new int[nums.length];
+//
+//        int maxNumber = 1;
+//
+//        for (int ch : nums) {
+//            maxNumber = maxNumber * ch;
+//        }
+//
+//        int counter = 0;
+//
+//        for (int num : nums) {
+//            result[counter] = maxNumber % num;
+//            counter++;
+//        }
+//
+//        return result;
+//    }
 
 
 }

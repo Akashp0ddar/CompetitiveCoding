@@ -493,4 +493,71 @@ public class Solutions {
 
         return newWord.toString().trim();
     }
+
+    /***
+     *<a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array/">...</a>
+     * */
+    public int removeDuplicates(int[] nums) {
+
+        ArrayList<Integer> nonDuplicate = new ArrayList<>();
+
+        // removing duplicate
+        for (int num : nums) {
+
+            if (!nonDuplicate.contains(num)) {
+                nonDuplicate.add(num);
+            }
+
+        }
+
+        for (int i = 0; i < nonDuplicate.size(); i++) {
+            nums[i] = nonDuplicate.get(i);
+        }
+
+        return nonDuplicate.size();
+
+    }
+
+
+    public boolean increasingTriplet(int[] nums) {
+
+        if (nums.length < 3) {
+            return false;
+        }
+
+        for (int i = 0; i < nums.length; i++) {
+
+//            int first = nums[i];
+//            int j = nums[i + 1];
+//            int k = nums[i + 2];
+//
+//            if (first < j ) {
+//
+//                if (j<k){
+//
+//                    return true;
+//                }
+//            }
+
+        }
+
+        return false;
+    }
+
+
+    public ListNode modifiedList(int[] nums, ListNode head) {
+        if (nums == null || nums.length == 0) {
+            return null;
+        }
+
+        ListNode dummy = new ListNode(0);
+        ListNode current = dummy;
+
+        for (int num : nums) {
+            current.next = new ListNode(num);
+            current = current.next;
+        }
+
+        return dummy.next;
+    }
 }
