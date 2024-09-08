@@ -545,28 +545,6 @@ public class Solutions {
     }
 
 
-    // Function to add a new node at the end of the list
-    public static void add(ListNode head, int val) {
-        ListNode newNode = new ListNode(val);
-        if (head == null) {
-            head = newNode;
-        } else {
-            ListNode current = head;
-            while (current.next != null) {
-                current = current.next;
-            }
-            current.next = newNode;
-        }
-    }
-
-    public static void printList(ListNode head) {
-        ListNode current = head;
-        while (current != null) {
-            System.out.print(current.val + " ");
-            current = current.next;
-        }
-    }
-
     public ListNode modifiedList(int[] nums, ListNode head) {
         if (nums == null || nums.length == 0) {
             return null;
@@ -602,5 +580,70 @@ public class Solutions {
         }
 
         return head;
+    }
+
+
+    /**
+     * <a href="https://leetcode.com/problems/number-of-good-pairs/description/">Number of good pair</a>
+     */
+    public static int numIdenticalPairs(int[] nums) {
+        int result = 0;
+
+        for (int i : nums) {
+            for (int j : nums) {
+
+            }
+        }
+        return result;
+    }
+
+    /**
+     * <a href="https://leetcode.com/problems/plus-one/">Plush One</a>
+     */
+
+    public int[] plusOne(int[] digits) {
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (int digit : digits) {
+            stringBuilder.append(digit);
+        }
+
+
+        stringBuilder.replace(0, stringBuilder.toString().length(), String.valueOf(Long.parseLong(stringBuilder.toString()) + 1));
+
+        char[] c = stringBuilder.toString().toCharArray();
+
+        int[] finalArr = new int[c.length];
+
+        for (int i = 0; i < c.length; i++) {
+            finalArr[i] = Integer.parseInt(String.valueOf(c[i]));
+        }
+
+        return finalArr;
+    }
+
+    /**
+     * <a href="https://leetcode.com/problems/score-of-a-string/description/">Score of String</a>
+     */
+
+    public int scoreOfString(String s) {
+
+        int result = 0;
+
+        int[] ascIIValues = new int[s.length()];
+
+
+        for (int i = 0; i < s.length(); i++) {
+            ascIIValues[i] = s.charAt(i);
+        }
+
+        for (int i = 0; i < ascIIValues.length - 1; i++) {
+
+            result += Math.abs(ascIIValues[i] - ascIIValues[i + 1]);
+        }
+
+        return result;
+
     }
 }

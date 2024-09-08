@@ -5,24 +5,19 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Solutions sol = new Solutions();
-        int[] arr = {1, 2, 3};
+        int[] arr = {1, 2, 3, 1, 1, 3};
 
 //        int k = 1010101;
 //        System.out.println(Integer.parseInt(String.valueOf(k), 2));
 
         ListNode head = new ListNode();
 
+//        sol.modifiedList(arr, head);
 
-        Solutions.add(head, 1);
-        Solutions.add(head, 2);
-        Solutions.add(head, 3);
-        Solutions.add(head, 4);
-        Solutions.add(head, 5);
+        String s = "zaz";
 
-//        Solutions.printList(head);
+        System.out.println(sol.scoreOfString(s));
 
-
-        sol.modifiedList(arr, head);
 
     }
 
@@ -43,9 +38,6 @@ public class Main {
         // Return the new head of the linked list
         return head;
     }
-
-
-
 
 
     public static void printList(ListNode head) {
@@ -206,18 +198,6 @@ public class Main {
         int bob = sc.nextInt();
         int cameron = sc.nextInt();
         int additionalMatches = sc.nextInt();
-
-
-//        3
-//        3 5 2 1
-//        4 4 2 5
-//        1 4 7 2
-
-//        if(A+M == B || A+M == C || B+M== C || B+M== A || C+M == A || C+M == B){
-//            return "Yes";
-//        }
-//
-//        if(A==B || B==C || C==A)    return "Yes";
 
         if (additionalMatches + cameron == alice || additionalMatches + cameron == bob || alice == bob) {
             return "Yes";
