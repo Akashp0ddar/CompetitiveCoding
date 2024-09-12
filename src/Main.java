@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -5,18 +6,15 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Solutions sol = new Solutions();
-        int[] arr = {1, 2, 3, 1, 1, 3};
+        int[] arr = {4, 4, 1, 3, 1, 3, 2, 2, 5, 5, 1, 5, 2, 1, 2, 3, 5, 4};
+        int[] arr2 = {4, 3, 1, 2};
 
 //        int k = 1010101;
 //        System.out.println(Integer.parseInt(String.valueOf(k), 2));
 
-        ListNode head = new ListNode();
 
-//        sol.modifiedList(arr, head);
-
-        String s = "zaz";
-
-        System.out.println(sol.scoreOfString(s));
+        Arrays.sort(arr);
+        System.out.println(sol.maxOperations(arr, 2));
 
 
     }

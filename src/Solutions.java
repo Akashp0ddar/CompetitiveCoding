@@ -286,6 +286,20 @@ public class Solutions {
     }
 
     /**
+     * <a href="https://leetcode.com/problems/number-of-good-pairs/description/">Number of good pair</a>
+     */
+    public static int numIdenticalPairs(int[] nums) {
+        int result = 0;
+
+        for (int i : nums) {
+            for (int j : nums) {
+
+            }
+        }
+        return result;
+    }
+
+    /**
      * <a href="https://leetcode.com/problems/remove-element/">...</a>
      */
     public int removeElement(int[] nums, int val) {
@@ -345,7 +359,6 @@ public class Solutions {
         return String.valueOf(sb);
     }
 
-
     /**
      * <a href="https://leetcode.com/problems/kids-with-the-greatest-number-of-candies/?envType=study-plan-v2&envId=leetcode-75">...</a>
      * watch solution
@@ -372,7 +385,6 @@ public class Solutions {
 
         return result;
     }
-
 
     /**
      * <a href="https://leetcode.com/problems/reverse-vowels-of-a-string/description/?envType=study-plan-v2&envId=leetcode-75">...</a>
@@ -401,7 +413,6 @@ public class Solutions {
 
     }
 
-
     /**
      * <a href="https://leetcode.com/problems/can-place-flowers/?envType=study-plan-v2&envId=leetcode-75">...</a>
      */
@@ -419,7 +430,6 @@ public class Solutions {
         }
         return maxFlowers >= n;
     }
-
 
     public int firstMissingPositive(ArrayList<Integer> A) {
 //        Arrays.s
@@ -447,7 +457,6 @@ public class Solutions {
         return 0;
     }
 
-
     public ArrayList<Integer> solve(ArrayList<Integer> A) {
         int zeros = 0;
         int ones = 0;
@@ -472,7 +481,6 @@ public class Solutions {
 
         return arrayList;
     }
-
 
     /**
      * <a href="https://leetcode.com/problems/reverse-words-in-a-string/?envType=study-plan-v2&envId=leetcode-75">Reverse Words in a String</a>
@@ -518,7 +526,6 @@ public class Solutions {
 
     }
 
-
     public boolean increasingTriplet(int[] nums) {
 
         if (nums.length < 3) {
@@ -543,7 +550,6 @@ public class Solutions {
 
         return false;
     }
-
 
     public ListNode modifiedList(int[] nums, ListNode head) {
         if (nums == null || nums.length == 0) {
@@ -580,21 +586,6 @@ public class Solutions {
         }
 
         return head;
-    }
-
-
-    /**
-     * <a href="https://leetcode.com/problems/number-of-good-pairs/description/">Number of good pair</a>
-     */
-    public static int numIdenticalPairs(int[] nums) {
-        int result = 0;
-
-        for (int i : nums) {
-            for (int j : nums) {
-
-            }
-        }
-        return result;
     }
 
     /**
@@ -646,4 +637,72 @@ public class Solutions {
         return result;
 
     }
+
+    public int minBitFlips(int start, int goal) {
+
+        int result = 0;
+
+        int xor = start ^ goal;
+
+        while (xor != 0) {
+            result += xor & 1;
+
+            xor >>= 1;
+        }
+
+        return result;
+
+    }
+
+
+    public int maxArea(int[] height) {
+
+        int result = 0;
+
+        int left = 0;
+        int right = height.length - 1;
+
+        int maxArea = 0;
+
+        while (left < right) {
+            int width = right - left;
+            int h = Math.min(height[left], height[right]) * width;
+            maxArea = Math.max(maxArea, h);
+            if (height[left] < height[right]) {
+                left++;
+            } else {
+                right++;
+            }
+        }
+
+        return maxArea;
+
+    }
+
+
+    public int maxOperations(int[] nums, int k) {
+
+        int result = 0;
+
+        int left = 0;
+        int right = nums.length - 1;
+
+        while (left < right) {
+            int sum = nums[left] + nums[right];
+
+            if (sum > k)
+                right--;
+            else if (sum < k)
+                left++;
+            else {
+                result++;
+                left++;
+                right--;
+            }
+        }
+
+        return result;
+
+    }
+
 }
