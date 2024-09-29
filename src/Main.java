@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -7,14 +6,13 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         Solutions sol = new Solutions();
         int[] arr = {4, 4, 1, 3, 1, 3, 2, 2, 5, 5, 1, 5, 2, 1, 2, 3, 5, 4};
-        int[] arr2 = {4, 3, 1, 2};
+        int[] arr2 = {2, 1, 5, 0, 4, 6};
 
 //        int k = 1010101;
 //        System.out.println(Integer.parseInt(String.valueOf(k), 2));
 
 
-        Arrays.sort(arr);
-        System.out.println(sol.maxOperations(arr, 2));
+        System.out.println(sol.increasingTriplet(arr2));
 
 
     }
