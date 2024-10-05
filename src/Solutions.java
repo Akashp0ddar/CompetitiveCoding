@@ -1,3 +1,5 @@
+import leetcodeproblems.ListNode;
+
 import java.util.*;
 
 public class Solutions {
