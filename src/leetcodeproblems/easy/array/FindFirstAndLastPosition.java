@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 public class FindFirstAndLastPosition {
 
+    //https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/solutions/5781959/100-beats-binary-search-java-explained/?envType=problem-list-v2&envId=array
+
     public static void main(String[] args) {
         System.out.println(Arrays.toString(searchRange(new int[]{}, 0)));
     }
@@ -28,6 +30,7 @@ public class FindFirstAndLastPosition {
             }
 
         }
+
 
         return new int[]{firstPosition, lastPosition};
     }
