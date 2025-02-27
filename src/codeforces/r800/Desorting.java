@@ -17,24 +17,34 @@ public class Desorting {
 
 
     public static int solve(int[] arr) {
-        int result;
-        int minDifferenceIndex = 0;
-        int minDifference = Integer.MAX_VALUE;
-
         for (int i = 0; i < arr.length - 1; i++) {
-            int currentDifference = arr[i + 1] - arr[i];
-            if (currentDifference < minDifference) {
-                minDifferenceIndex = i;
-                minDifference = currentDifference;
+            if (arr[i] > arr[i + 1]) {
+                return 0;
             }
         }
 
-        int lowerItem = arr[minDifferenceIndex];
-        int higherItem = arr[minDifferenceIndex + 1];
-        int items = higherItem - lowerItem;
-        result = (items + 1) / 2;
+        int minDifference = Integer.MAX_VALUE;
+        int minDifferenceIndex = 0;
 
-        return result;
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i + 1] - arr[i] < minDifference) {
+                minDifferenceIndex = i;
+                minDifference = arr[i + 1] - arr[i];
+            }
+
+        }
+
+        int operation = 0;
+        int minNumber = arr[minDifferenceIndex];
+        int maxNumber = arr[minDifferenceIndex + 1];
+
+        while (minNumber <= maxNumber) {
+            operation++;
+            minNumber++;
+            maxNumber--;
+        }
+
+        return operation;
     }
 
 
