@@ -24,28 +24,14 @@ public class Desorting {
         }
 
         int minDifference = Integer.MAX_VALUE;
-        int minDifferenceIndex = 0;
 
         for (int i = 0; i < arr.length - 1; i++) {
-            if (arr[i + 1] - arr[i] < minDifference) {
-                minDifferenceIndex = i;
-                minDifference = arr[i + 1] - arr[i];
-            }
+            minDifference = Math.min(arr[i + 1] - arr[i], minDifference);
 
         }
 
-        int operation = 0;
-        int minNumber = arr[minDifferenceIndex];
-        int maxNumber = arr[minDifferenceIndex + 1];
 
-        while (minNumber <= maxNumber) {
-            operation++;
-            minNumber++;
-            maxNumber--;
-        }
-
-        return operation;
+        return (minDifference + 2) / 2;
     }
-
 
 }
