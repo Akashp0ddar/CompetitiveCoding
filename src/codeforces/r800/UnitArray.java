@@ -33,7 +33,6 @@ public class UnitArray {
             hashMap.put(1, hashMap.get(1) + 1);
         }
 
-
         return result;
     }
 
