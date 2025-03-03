@@ -24,7 +24,7 @@ public class DoNotTryToCount {
         if (x.contains(s)) {
             return counter;
         } else {
-            for (int i = 0; sb.length() < s.length() * 4 || i < 4; i++) {
+            for (int i = 0; sb.length() < s.length() * 2 || i < 2; i++) {
                 counter++;
                 sb.append(sb);
 

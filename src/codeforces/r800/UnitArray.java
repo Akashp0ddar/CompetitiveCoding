@@ -27,7 +27,7 @@ public class UnitArray {
             hashMap.put(ar, hashMap.getOrDefault(ar, 0) + 1);
         }
 
-        while (getSum(hashMap) < 0 && getMultiply(hashMap) % 2 != 0) {
+        while (getSum(hashMap) < 0 || getMultiply(hashMap) % 2 != 0) {
             result++;
             hashMap.put(-1, hashMap.get(-1) - 1);
             hashMap.put(1, hashMap.get(1) + 1);
