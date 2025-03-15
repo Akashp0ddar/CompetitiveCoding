@@ -33,8 +33,7 @@ public class Coins {
                 return "Yes";
 
         }
-
-
+        
         return "No";
     }
 
