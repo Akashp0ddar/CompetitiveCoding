@@ -1,0 +1,13 @@
+package codechef;
+
+import java.util.Scanner;
+
+public class VacationClothes {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        System.out.println(Math.min(n, 7));
+    }
+
+}
